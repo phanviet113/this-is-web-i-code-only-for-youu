@@ -82,7 +82,7 @@
     <div class="audio-container" id="audioContainer">
       <h3>Đoạn ghi âm của bạn:</h3>
       <audio controls>
-        <source src="https://drive.google.com/uc?export=download&id=1Mm_gpW-8RicUq8dFDpIj2U1b6Di-pCpg" type="audio/mpeg">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
         Trình duyệt của bạn không hỗ trợ audio.
       </audio>
     </div>
