@@ -3,24 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hiệu Ứng 3D Cảnh Hoa</title>
+  <title>Bông Hoa Hoàng Chấm và Cảnh Nền 3D</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
+      text-align: center;
+      background: url('https://images.unsplash.com/photo-1562901243-8b0a68c9f61f') no-repeat center center fixed;
+      background-size: cover;
       overflow: hidden;
       height: 100vh;
-      background: url('YOUR_IMAGE_PATH') no-repeat center center fixed;
-      background-size: cover;
+      position: relative;
+      animation: backgroundAnimation 60s infinite linear;
+    }
+
+    /* Nền với hiệu ứng 3D */
+    @keyframes backgroundAnimation {
+      0% { transform: translateZ(0) rotate(0deg); }
+      100% { transform: translateZ(150px) rotate(360deg); }
+    }
+
+    .hill {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 200px;
+      background: #228B22;
+      border-top-left-radius: 50% 50%;
+      border-top-right-radius: 50% 50%;
     }
 
     .container {
       position: absolute;
-      top: 50%;
+      top: 30%;
       left: 50%;
       transform: translate(-50%, -50%);
       padding: 20px;
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.7);
       border-radius: 10px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
       text-align: center;
@@ -48,64 +67,70 @@
       background-color: #ad1457;
     }
 
+    /* Hoa Hoàng Chấm */
+    .flower {
+      position: absolute;
+      bottom: 0;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: grow 4s ease-in-out forwards, move 5s ease-in-out infinite;
+    }
+
+    .flower .petal {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: yellow;
+      animation: petalAnimation 1s ease-in-out infinite;
+    }
+
+    .flower .petal:nth-child(1) { transform: rotate(0deg) translateX(15px); }
+    .flower .petal:nth-child(2) { transform: rotate(90deg) translateX(15px); }
+    .flower .petal:nth-child(3) { transform: rotate(180deg) translateX(15px); }
+    .flower .petal:nth-child(4) { transform: rotate(270deg) translateX(15px); }
+
+    @keyframes grow {
+      0% {
+        transform: scale(0);
+        bottom: 0;
+      }
+      50% {
+        transform: scale(1);
+        bottom: 40%;
+      }
+      100% {
+        transform: scale(1.2);
+        bottom: 70%;
+        background-color: yellow;
+      }
+    }
+
+    @keyframes move {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(30px); }
+      100% { transform: translateX(-30px); }
+    }
+
+    @keyframes petalAnimation {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
     #message {
       margin-top: 20px;
       font-size: 1.5em;
       color: #d81b60;
       display: none;
     }
-
-    .scene {
-      display: none;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      perspective: 1000px;
-      overflow: hidden;
-    }
-
-    .hill {
-      position: absolute;
-      bottom: -50px;
-      width: 150%;
-      height: 300px;
-      background: linear-gradient(to top, #228B22, #32CD32);
-      border-radius: 50%;
-      transform: translateZ(-200px) rotateX(20deg);
-      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    .flower {
-      position: absolute;
-      width: 30px;
-      height: 30px;
-      transform-style: preserve-3d;
-      animation: floatFlower 5s ease-in-out infinite;
-    }
-
-    .flower .petal {
-      position: absolute;
-      width: 20px;
-      height: 40px;
-      background: pink;
-      border-radius: 50%;
-      transform-origin: bottom center;
-    }
-
-    .flower .petal:nth-child(1) { transform: rotateX(0deg) translateZ(15px); }
-    .flower .petal:nth-child(2) { transform: rotateX(90deg) translateZ(15px); }
-    .flower .petal:nth-child(3) { transform: rotateX(180deg) translateZ(15px); }
-    .flower .petal:nth-child(4) { transform: rotateX(270deg) translateZ(15px); }
-
-    @keyframes floatFlower {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-    }
   </style>
 </head>
 <body>
+  <div class="hill"></div>
   <div class="container">
     <h2>Nhập mật khẩu để mở bí mật</h2>
     <input type="password" id="password" placeholder="Nhập mật khẩu">
@@ -118,11 +143,7 @@ Anh hiểu rằng trong một mối quan hệ, không phải lúc nào cũng ho�
 
 Cuộc sống sẽ không phải lúc nào cũng dễ dàng. Công việc, học tập, gia đình… những vấn đề đó đôi khi có thể làm chúng ta cảm thấy căng thẳng và mệt mỏi. Nhưng anh hy vọng chúng ta sẽ luôn bên nhau để giúp đỡ nhau, thay vì để những áp lực đó làm ảnh hưởng đến chúng ta. Em luôn có anh ở đây, sẵn sàng hỗ trợ khi em cần.
 
-Cảm ơn em vì đã đọc những dòng này. Anh yêu em, rất nhiều!</p>
-  </div>
-
-  <div class="scene">
-    <div class="hill"></div>
+Cảm ơn em vì đã đọc những dòng này. Anh yêu em, rất nhiều.</p>
   </div>
 
   <script>
@@ -130,11 +151,9 @@ Cảm ơn em vì đã đọc những dòng này. Anh yêu em, rất nhiều!</p>
       const correctPassword = "iuemnhieu";
       const inputPassword = document.getElementById("password").value;
       const message = document.getElementById("message");
-      const scene = document.querySelector(".scene");
 
       if (inputPassword === correctPassword) {
         message.style.display = "block";
-        scene.style.display = "block";
         createFlowers();
       } else {
         alert("Sai mật khẩu! Vui lòng thử lại.");
@@ -142,24 +161,23 @@ Cảm ơn em vì đã đọc những dòng này. Anh yêu em, rất nhiều!</p>
     }
 
     function createFlowers() {
-      const scene = document.querySelector(".scene");
-      for (let i = 0; i < 50; i++) {
+      for (let i = 0; i < 30; i++) {
         const flower = document.createElement("div");
         flower.className = "flower";
-        flower.style.left = ${Math.random() * 100}%;
-        flower.style.bottom = ${Math.random() * 50}%;
+        flower.style.left = `${Math.random() * 100}%`;
+        flower.style.animationDelay = `${Math.random() * 2}s`;
         
+        // Create petals for the flower
         for (let j = 0; j < 4; j++) {
           const petal = document.createElement("div");
           petal.className = "petal";
           flower.appendChild(petal);
         }
 
-        scene.appendChild(flower);
+        document.body.appendChild(flower);
       }
     }
   </script>
 </body>
 </html>
-
   
